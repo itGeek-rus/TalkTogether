@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /authentication
+
+spring:
+  application:
+    name: authentication-service
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/messanger
+    username:
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database: postgresql
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: authentication-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
