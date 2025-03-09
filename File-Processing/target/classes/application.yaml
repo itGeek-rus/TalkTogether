@@ -1,0 +1,21 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /fileProcessing
+
+spring:
+  application:
+    name: fileProcessing-service
+  data:
+    mongodb:
+      url: mongodb://localhost:27017/files
+  kafka:
+    bootstrap-servers: localhost:9096
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: fileProcessing-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
